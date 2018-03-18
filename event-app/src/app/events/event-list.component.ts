@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../shared/event.service';
 
 @Component({
   selector: 'app-event-list',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventListComponent implements OnInit {
 
-  public event = {
-    name: 'Angular Connect', date: '3/1/2025', time: '8am', price: '122',
-    location: { address: '123 Main St', city: 'Salt Lake City, UT', country: 'USA' }
-  };
 
-  constructor() { }
+
+  public events;
+
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.events = this.eventService.getEventService();
   }
 
 }
