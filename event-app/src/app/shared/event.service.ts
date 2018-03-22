@@ -9,4 +9,9 @@ export class EventService {
   public getEventService() {
     return events;
   }
+
+  public getEventServiceById(id) {
+    return events.find(event => event.id === id);
+  }
+
 }

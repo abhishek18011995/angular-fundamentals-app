@@ -9,14 +9,12 @@ import { ToastrService } from 'ngx-toastr';
 export class EventThumbnailComponent implements OnInit {
 
   @Input() events;
-  @Output() clickedEventThumbnail = new EventEmitter();
+  // @Output() clickedEventThumbnail = new EventEmitter();
 
   constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
 
-<<<<<<< HEAD
-=======
   }
 
   public eventThumbnail() {
@@ -25,10 +23,9 @@ export class EventThumbnailComponent implements OnInit {
 
   public onClickEventName(eventName) {
     this.toastrService.success(eventName);
->>>>>>> 7789afe7b98193cb1468a3c607967754efae8736
   }
 
-  public onClickEventThumbnail(value) {
-    this.clickedEventThumbnail.emit(value);
-  }
+  // public onClickEventThumbnail(value) {
+  //   this.clickedEventThumbnail.emit(value);
+  // }
 }
