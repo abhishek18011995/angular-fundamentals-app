@@ -6,4 +6,6 @@
     <p class="card-text">Price: {{events.price}}</p>
     <p class="card-text">Location: {{events.location.address+" "+ events.location.city+" "+events.location.country}}</p>
   </div>
+  
+<button type="button" class="btn btn-warning" (click)="onClickEventThumbnail(events.name)">Click Me!</button>
 </div>
