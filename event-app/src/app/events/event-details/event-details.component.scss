@@ -1,3 +1,10 @@
-.event-details{
-    
+.event-details {
+    .event-details-img {
+        width: 400px;
+        // height: 100px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
 }

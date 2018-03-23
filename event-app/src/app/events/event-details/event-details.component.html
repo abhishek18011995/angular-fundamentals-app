@@ -1,28 +1,30 @@
-<div>
-  <div style="width:200px;height:200px;">
-    <img [src]="event?.imageUrl" [alt]="event?.name">
-  </div>
-  <div class="row">
-    <div class="col-md-11">
-      <h2>{{event?.name}} </h2>
+<div class="container-fluid">
+  <div id="eventDetails" class="event-details">
+    <div class="event-details-img">
+      <img [src]="event?.imageUrl" [alt]="event?.name">
     </div>
-  </div>
+    <div class="row margin20l">
+      <div class="col-md-11">
+        <h2>{{event?.name}} </h2>
+      </div>
+    </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div>
-        <strong>Date:</strong> {{event?.date}}</div>
-      <div>
-        <strong>Time:</strong> {{event?.time}}</div>
-      <div>
-        <strong>Price:</strong> ${{event?.price}}</div>
-    </div>
-    <div class="col-md-6">
-      <address>
-        <strong>Address:</strong>
-        <br /> {{event?.location?.address}}
-        <br /> {{event?.location?.city}}, {{event?.location?.country}}
-      </address>
+    <div class="row margin20l">
+      <div class="col-md-6">
+        <div>
+          <strong>Date:</strong> {{event?.date}}</div>
+        <div>
+          <strong>Time:</strong> {{event?.time}}</div>
+        <div>
+          <strong>Price:</strong> ${{event?.price}}</div>
+      </div>
+      <div class="col-md-6">
+        <address>
+          <strong>Address:</strong>
+          <br /> {{event?.location?.address}}
+          <br /> {{event?.location?.city}}, {{event?.location?.country}}
+        </address>
+      </div>
     </div>
   </div>
 </div>
