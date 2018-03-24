@@ -10,6 +10,9 @@ import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnai
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EventService } from './shared/event.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
+import { Error404Component } from './errors/error404/error404.component';
+import { EventDetailsRouteActivatorService } from './shared/event-details-route-activator.service';
 
 
 @NgModule({
@@ -18,14 +21,27 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
     EventListComponent,
     EventThumbnailComponent,
     NavBarComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    CreateEventComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule, AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [EventService],
+  providers: [EventService,
+    EventDetailsRouteActivatorService,
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyCreateEvent }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+function checkDirtyCreateEvent(component: CreateEventComponent) {
+  if (component.isDirty) {
+   return window.confirm('all data will be lost?');
+  }
+  return true;
+}

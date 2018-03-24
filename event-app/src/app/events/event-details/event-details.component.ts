@@ -23,6 +23,7 @@ export class EventDetailsComponent implements OnInit {
     const id = Number.parseInt(this.activeRoute.snapshot.params['id']);
     // console.log(typeof Number.parseInt(id));
       this.event = this.eventService.getEventServiceById(id);
+      console.log(this.event);
       }
 
 }
