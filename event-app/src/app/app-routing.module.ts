@@ -5,11 +5,13 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Error404Component } from './errors/error404/error404.component';
 import { EventDetailsRouteActivatorService } from './shared/event-details-route-activator.service';
+import { ResolvedEventDataService } from './shared/resolved-event-data.service';
 
 const appRoutes: Routes = [
   {
     path: 'events',
-    component: EventListComponent
+    component: EventListComponent,
+    resolve: { events: ResolvedEventDataService }
   }, {
     path: 'events/new',
     component: CreateEventComponent,

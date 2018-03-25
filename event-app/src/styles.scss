@@ -1,4 +1,4 @@
-@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+// @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 
 body{
     
@@ -15,4 +15,8 @@ p,h1,h2,h3,h4,h5,h6,div{
 
 .margin20l{
     margin-left: 20px;
+}
+
+.active-link{
+    color: #f56d6d !important;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/event.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-list',
@@ -12,12 +13,22 @@ export class EventListComponent implements OnInit {
 
   public events;
 
-  constructor(private eventService: EventService) { }
+  constructor(
+    private eventService: EventService,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.events = this.eventService.getEventService();
+    // this.events = this.eventService.getEventService();
+    // this.eventService.getEventService().subscribe(response => {
+    //   console.log(response);
+    //   this.events = response;
+    // });
+    this.events = this.activeRoute.snapshot.data.events;
+    console.log(this.activeRoute.snapshot.data.events);
+
   }
-  
+
   // public handleClickedEventThumbnail(event){
   //   console.log(event);
   // }
