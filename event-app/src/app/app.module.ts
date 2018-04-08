@@ -21,6 +21,7 @@ import {
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404Component } from './errors/error404/error404.component';
+import { AuthService } from './shared/auth/auth.service';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { Error404Component } from './errors/error404/error404.component';
   providers: [EventService,
     EventDetailsRouteActivatorService,
     ResolvedEventDataService,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyCreateEvent }
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyCreateEvent },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

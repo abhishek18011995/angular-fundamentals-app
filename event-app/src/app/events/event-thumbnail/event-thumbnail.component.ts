@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-event-thumbnail',
@@ -8,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EventThumbnailComponent implements OnInit {
 
-  @Input() events;
+  @Input() events: Event;
   // @Output() clickedEventThumbnail = new EventEmitter();
 
   constructor(private toastrService: ToastrService) { }

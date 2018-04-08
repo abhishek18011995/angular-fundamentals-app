@@ -40,8 +40,12 @@
       </form>
       <ul class="navbar-nav user">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/user/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-            true}">Welcome John!</a>
+          <a class="nav-link" *ngIf="!authService.isAuthenticated()" [routerLink]="['/user/login']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                true}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="authService.isAuthenticated()" [routerLink]="['/user/profile']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+            true}">Welcome {{authService.currentUser.firstName}}</a>
         </li>
       </ul>
     </div>
