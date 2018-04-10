@@ -24,4 +24,9 @@ export class AuthService {
     return !!this.currentUser.userName;
   }
 
+  public updateUser(updatedInfo) {
+    console.log(updatedInfo);
+    this.currentUser.firstName = updatedInfo.firstName;
+    this.currentUser.lastName = updatedInfo.lastName;
+  }
 }
