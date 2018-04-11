@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   public createProfileForm() {
     this.userInfoForm = new FormGroup({
       firstName: new FormControl(this.authService.currentUser.firstName, {
-        validators: Validators.required,
+        validators: [Validators.required, Validators.pattern('^[a-zA-Z]*$')]
       }),
       lastName: new FormControl(this.authService.currentUser.lastName)
     }, { updateOn: 'blur' });

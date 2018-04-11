@@ -5,9 +5,12 @@
     <form [formGroup]="userInfoForm" autocomplete="off" (ngSubmit)="saveUserInfo(userInfoForm.value)" novalidate>
       <div class="form-group" >
         <label for="firstName">First Name:</label>
-        <input id="firstName" formControlName="firstName" type="text" class="form-control" [ngClass]="{'error':userInfoForm.invalid}" placeholder="First Name..." />
-        <div *ngIf="userInfoForm.invalid && userInfoForm.touched" class="invalid-field">
+        <input id="firstName" formControlName="firstName" type="text" class="form-control" [ngClass]="{'error':userInfoForm.controls.firstName.invalid && userInfoForm.controls.firstName.touched}" placeholder="First Name..." />
+        <div *ngIf="userInfoForm.controls.firstName.invalid && userInfoForm.controls.firstName.touched && userInfoForm.controls.firstName.errors.required" class="invalid-field">
           Required
+        </div>
+        <div *ngIf="userInfoForm.controls.firstName.invalid && userInfoForm.controls.firstName.touched && userInfoForm.controls.firstName.errors.pattern" class="invalid-field">
+          Incorrect pattern
         </div>
       </div>
       <div class="form-group">

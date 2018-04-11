@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../shared/auth/auth.service';
 import { IUser } from '../../models/user.model';
 import { Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('userName') userName: NgModel;
+
   public userInfo = {
-    userName: 'aaaa',
-    password: 'aaaa'
+    userName: '',
+    password: ''
   };
 
   constructor(private authService: AuthService,
@@ -22,9 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   public submitLoginForm(formValue) {
-    // console.log(formValue);
+    console.log(this.userName);
     this.authService.loginUser(formValue);
-    this.router.navigate(['/events']);
+    // this.router.navigate(['/events']);
   }
 
   public cancel() {

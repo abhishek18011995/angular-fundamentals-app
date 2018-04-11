@@ -26,7 +26,7 @@ export class EventListComponent implements OnInit {
     //   this.events = response;
     // });
     this.events = this.activeRoute.snapshot.data.events;
-    console.log(this.activeRoute.snapshot.data.events);
+    // console.log(this.activeRoute.snapshot.data.events);
 
   }
 

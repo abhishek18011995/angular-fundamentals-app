@@ -15,6 +15,7 @@ import {
 
 import { Error404Component } from './errors/error404/error404.component';
 import { UserModule } from './user/user.module';
+import { CreateSessionComponent } from './events/create-session/create-session.component';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +25,11 @@ const appRoutes: Routes = [
   }, {
     path: 'events/new',
     component: CreateEventComponent,
+    canDeactivate: ['canDeactivateCreateEvent'],
+    pathMatch: 'full'
+  }, {
+    path: 'events/sessions/new',
+    component: CreateSessionComponent,
     canDeactivate: ['canDeactivateCreateEvent'],
     pathMatch: 'full'
   }, {

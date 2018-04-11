@@ -4,8 +4,8 @@
   <form #loginForm="ngForm" (ngSubmit)="submitLoginForm(loginForm.value)" novalidate>
     <div class="form-group">
       <label for="userName">User Name:</label>
-      <em *ngIf="userName.invalid">Required</em>
-      <input id="userName" type="text" #userName="ngModel" name="userName" (ngModel)="userInfo.userName" class="form-control" placeholder="User Name..." required
+      <span *ngIf="userName.invalid  && userName.touched"><em *ngIf="userName.errors.required">Required</em></span>
+      <input id="userName" type="text" #userName="ngModel" [ngModelOptions]="{ updateOn: 'blur' }" name="userName" (ngModel)="userInfo.userName" class="form-control" placeholder="User Name..." required
       />
     </div>
     <div class="form-group">

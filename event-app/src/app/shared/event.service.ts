@@ -23,4 +23,10 @@ export class EventService {
     return events.find(event => event.id === id);
   }
 
+  public newEvent(event) {
+    console.log(event);
+    event.id = 999;
+    events.push(event);
+  }
+
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import {
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404Component } from './errors/error404/error404.component';
 import { AuthService } from './shared/auth/auth.service';
+import { CreateSessionComponent } from './events/create-session/create-session.component';
 
 
 @NgModule({
@@ -32,10 +34,11 @@ import { AuthService } from './shared/auth/auth.service';
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   imports: [
-    BrowserModule, AppRoutingModule,
+    BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
