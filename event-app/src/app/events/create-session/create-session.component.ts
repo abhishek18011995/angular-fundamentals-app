@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventSessions } from '../../models/eventSession.model';
+import { restrictedWords } from '../../shared/index';
 
 @Component({
   selector: 'app-create-session',
@@ -23,27 +24,11 @@ export class CreateSessionComponent implements OnInit {
       presenter: new FormControl('', [Validators.required]),
       duration: new FormControl('', [Validators.required]),
       level: new FormControl('', [Validators.required]),
-      abstract: new FormControl('', [Validators.required, this.restrictedWords(['foo', 'aaa'])]),
+      abstract: new FormControl('', [Validators.required, restrictedWords(['foo', 'aaa'])]),
     });
   }
 
 
-  public restrictedWords(words: string[]) {
-    return (control: FormControl): { [key: string]: any } => {
-      let invalidWords = [];
-      if (words) {
-        invalidWords = words.map(c => {
-          return control.value.includes(c) ? c : null;
-        });
-      }
-
-      if (control.value.includes('foo')) {
-        return { 'restrictedWord': 'foo' };
-      } else {
-        return null;
-      }
-    };
-  }
 
   public saveSession(value) {
     const sessionFormvalue: EventSessions = {
