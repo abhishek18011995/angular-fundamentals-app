@@ -1,0 +1,11 @@
+<div class="card-body" (click)="toggleVisible()">
+    <h4 class="card-title">
+        <ng-content select="[session-list-title]"></ng-content>
+    </h4>
+    <ng-content select="[session-list-body]" *ngIf="isVisible"></ng-content>
+  </div>
+
+<!-- <div class="card-body" (click)="toggleVisible()">
+  <h4 class="card-title">{{title}}</h4>
+  <ng-content *ngIf="isVisible"></ng-content>
+</div> -->

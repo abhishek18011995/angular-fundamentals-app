@@ -24,9 +24,20 @@ export class EventService {
   }
 
   public newEvent(event) {
-    console.log(event);
+    // console.log(event);
     event.id = 999;
     events.push(event);
+  }
+
+  public addNewSessionService(id, session) {
+
+    events.find(event => event.id === id).sessions.push(session);
+
+      // events.find(event => {
+      //   if (event.id === id) {
+      //     return event.sessions.push(session);
+      //   }
+      // });
   }
 
 }

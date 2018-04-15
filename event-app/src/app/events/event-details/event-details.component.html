@@ -5,18 +5,18 @@
     </div>
     <div class="row margin20l">
       <div class="col-md-11">
-        <h2>{{event?.name}} </h2>
+        <h2>{{event?.name | uppercase}} </h2>
       </div>
     </div>
 
     <div class="row margin20l">
       <div class="col-md-6">
         <div>
-          <strong>Date:</strong> {{event?.date}}</div>
+          <strong>Date:</strong> {{event?.date | date:'d/M/y'}}</div>
         <div>
           <strong>Time:</strong> {{event?.time}}</div>
         <div>
-          <strong>Price:</strong> ${{event?.price}}</div>
+          <strong>Price:</strong> {{event?.price |currency:'USD'}}</div>
       </div>
       <div class="col-md-6">
         <address>
@@ -27,4 +27,32 @@
       </div>
     </div>
   </div>
+  <hr style="margin-left: 35px;border-color:#5c77928f;margin-bottom:35px;">
+  <div class="row margin-left-20">
+    <h3 class="col-md-2">Sessions</h3>
+    <div class="btn-group btn-group-toggle col-md-2">
+        <label class="btn btn-secondary" [ngClass]="{active:sortBy==='name'}">
+          <input type="radio" name="sort" autocomplete="off" (click)="sortBy='name'" checked> By Name
+        </label>
+        <label class="btn btn-secondary" [ngClass]="{active:sortBy==='voters'}">
+          <input type="radio" name="sort" autocomplete="off" (click)="sortBy='voters'"> By Voters
+        </label>
+      </div>
+    <div class="btn-group btn-group-toggle col-md-5">
+      <label class="btn btn-secondary" [ngClass]="{active:filterBy==='all'}">
+        <input type="radio" name="filter" autocomplete="off" (click)="filterBy='all'" checked> All
+      </label>
+      <label class="btn btn-secondary" [ngClass]="{active:filterBy==='beginner'}">
+        <input type="radio" name="filter" autocomplete="off" (click)="filterBy='beginner'"> Beginner
+      </label>
+      <label class="btn btn-secondary" [ngClass]="{active:filterBy==='intermediate'}">
+        <input type="radio" name="filter" autocomplete="off" (click)="filterBy='intermediate'"> Intermediate
+      </label> <label class="btn btn-secondary" [ngClass]="{active:filterBy==='advanced'}">
+          <input type="radio" name="filter"  autocomplete="off" (click)="filterBy='advanced'"> Advanced
+        </label>
+    </div>
+    <a (click)="addMode()" class="col-md-2" style="padding-left:42px;">Add Session</a>
+  </div>
 </div>
+<app-create-session *ngIf="isAddMode" (addNewSession)="addNewSession($event)" (cancelCreateSessionEvent)="cancelCreateSessionEvent($event)"></app-create-session>
+<app-session-list *ngIf="!isAddMode" [sessions]="event?.sessions" [filterBy]="filterBy" [sortBy]="sortBy"></app-session-list>

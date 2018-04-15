@@ -1,17 +1,16 @@
 <div class="row">
   <div class="card events-jumbotron col-lg-5" *ngFor="let event of events" [routerLink]="['/events',event.id]">
     <div class="card-body">
-      <h3 class="card-title">{{event?.name}}</h3>
-      <p class="card-text">Date: {{event?.date}}</p>
+      <h3 class="card-title">{{event?.name | uppercase}}</h3>
+      <p class="card-text">Date: {{event?.date | date:'d/M/y'}}</p>
       <p class="card-text" [ngSwitch]="event?.time">Time: {{event?.time}} 
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
         <span *ngSwitchDefault>(Normal Start)</span>
       </p>
-      <p class="card-text">Price: {{event?.price}}</p>
+      <p class="card-text">Price: {{event?.price| currency:'USD'}}</p>
       <p class="card-text">Location: {{event?.location?.address+" "+ event?.location?.city+" "+event?.location?.country}}</p>
     </div>
   </div>
   
-<!-- <button type="button" class="btn btn-warning" (click)="onClickEventThumbnail(events.name)">Click Me!</button> -->
 </div>
