@@ -13,6 +13,9 @@ import { Event } from '../../models/event.model';
 export class EventDetailsComponent implements OnInit {
 
   public event;
+  public isAddMode = false;
+  public filterBy = 'all';
+  public sortBy = 'name';
 
   constructor(
     private eventService: EventService,
@@ -20,9 +23,37 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = Number.parseInt(this.activeRoute.snapshot.params['id']);
-      this.event = this.eventService.getEventServiceById(id);
-      // console.log(this.event);
-      }
+    this.getEventDetails();
+    console.log(this.event);
+  }
+
+  public getActiveRouteId() {
+    return Number.parseInt(this.activeRoute.snapshot.params['id']);
+  }
+
+  public getEventDetails() {
+    const id = this.getActiveRouteId();
+    this.event = this.eventService.getEventServiceById(id);
+
+  }
+
+  public addNewSession(newSession) {
+    const id = this.getActiveRouteId();
+    this.eventService.addNewSessionService(id, newSession);
+    this.isAddMode = false;
+  }
+
+  public addMode() {
+    this.isAddMode = true;
+    console.log(this.isAddMode);
+  }
+
+  public cancelCreateSessionEvent(event) {
+    this.isAddMode = false;
+  }
+
+  public changeFilter(value) {
+    console.log(value);
+  }
 
 }

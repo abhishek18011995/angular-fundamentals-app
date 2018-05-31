@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 
-export function restrictedWords(words: string[]) {
+export function  restrictedWords(words: string[]) {
     return (control: FormControl): { [key: string]: any } => {
       let invalidWords = [];
       if (words) {
@@ -15,6 +15,14 @@ export function restrictedWords(words: string[]) {
         return null;
       }
 
+      //   }).filter(c => c !== null);
+      // }
+
+      // if (invalidWords && invalidWords.length > 0) {
+      //   return { 'restrictedWord': invalidWords };
+      // } else {
+      //   return null;
+      // }
       // if (control.value.includes('foo')) {
       //   return { 'restrictedWord': 'foo' };
       // } else {

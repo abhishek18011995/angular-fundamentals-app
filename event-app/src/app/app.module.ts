@@ -24,6 +24,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404Component } from './errors/error404/error404.component';
 import { AuthService } from './shared/auth/auth.service';
 import { CreateSessionComponent } from './events/create-session/create-session.component';
+import { SessionListComponent } from './events/event-details/session-list/session-list.component';
+import { CollapsibleDivComponent } from './shared/collapsible-div/collapsible-div.component';
+import { DurationPipe } from './shared/pipes/duration.pipe';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { CreateSessionComponent } from './events/create-session/create-session.c
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleDivComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,
