@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 
@@ -27,6 +28,7 @@ import { CreateSessionComponent } from './events/create-session/create-session.c
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollapsibleDivComponent } from './shared/collapsible-div/collapsible-div.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
+import { ModalComponent } from './shared/modal/modal.component';
 
 
 @NgModule({
@@ -41,12 +43,13 @@ import { DurationPipe } from './shared/pipes/duration.pipe';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleDivComponent,
-    DurationPipe
+    DurationPipe,
+    ModalComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(), NgbModule.forRoot()
   ],
   providers: [EventService,
     EventDetailsRouteActivatorService,

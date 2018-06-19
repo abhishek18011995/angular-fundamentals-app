@@ -3,6 +3,7 @@ import { events } from '../shared/events';
 import { Event } from '../models/event.model';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { EventSessions } from '../models/eventSession.model';
 
 @Injectable()
 export class EventService {
@@ -30,14 +31,33 @@ export class EventService {
   }
 
   public addNewSessionService(id, session) {
-
     events.find(event => event.id === id).sessions.push(session);
+  }
 
-      // events.find(event => {
-      //   if (event.id === id) {
-      //     return event.sessions.push(session);
-      //   }
-      // });
+  public searchSessions(_sesssionTerm: string): EventSessions[] {
+
+    if (_sesssionTerm) {
+      const sesssionTerm = _sesssionTerm.toLocaleLowerCase();
+      let searchResult = [];
+
+      events.forEach(event => {
+        const matchingSessions = event.sessions.filter(session => {
+          return (session.name.toLocaleLowerCase().indexOf(sesssionTerm) > -1);
+        });
+        if (matchingSessions.length > 0) {
+          matchingSessions.map((session: any) => {
+            session.eventId = event.id;
+            return session;
+          });
+        }
+        searchResult = searchResult.concat(matchingSessions);
+        // if (matchingSessions.length > 0) {
+        //   searchResult.push(matchingSessions);
+        // }
+      });
+
+      return searchResult;
+    }
   }
 
 }
