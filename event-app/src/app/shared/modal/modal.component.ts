@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal',
@@ -10,6 +10,8 @@ export class ModalComponent implements OnInit {
 
   @ViewChild('content') modalcontent;
 
+  @Input('modalRef') modalRef: NgbModalRef;
+
   @Output() closeModalEvent = new EventEmitter();
 
   constructor(private modalService: NgbModal) { }
@@ -18,7 +20,8 @@ export class ModalComponent implements OnInit {
   }
 
   closeModal() {
-    this.closeModalEvent.emit('closed');
+    // this.closeModalEvent.emit('closed');
+    this.modalRef.dismiss();
   }
 
 }

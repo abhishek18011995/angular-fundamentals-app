@@ -1,19 +1,24 @@
 <div class="container-fluid">
-  <div class="card session col-md-10" *ngFor="let session of visibleSessions">
-    <app-collapsible-div>
-      <div session-list-title>
-        <!-- <h4 class="card-title">{{title}}</h4> -->
-        {{session.name}}
-        <img class="glyph-icon" src="../../assets/images/si-glyph-fire.svg" *ngIf="session.voters.length>0"/>
-      </div>
-      <div session-list-body>
-        <h6>{{session.presenter}}</h6>
-        <span>Duration: {{session.duration| duration}}</span>
-        <br />
-        <span>Level: {{session.level}}</span>
-        <p class="card-text">{{session.abstract}}</p>
-      </div>
-    </app-collapsible-div>
+  <div class="row" *ngFor="let session of visibleSessions">
+    <div class="col-md-1" *ngIf="authService.isAuthenticated()">
+      <app-upvote (vote)="togglevote(session)" [count]="session.voters.length" [isUserVoted]="isUserVoted(session)"></app-upvote>
+    </div>
+    <div class="card session col-md-10">
+      <app-collapsible-div>
+        <div session-list-title>
+          <!-- <h4 class="card-title">{{title}}</h4> -->
+          {{session.name}}
+          <img class="glyph-icon" src="../../assets/images/si-glyph-fire.svg" *ngIf="session.voters.length>3" />
+        </div>
+        <div session-list-body>
+          <h6>{{session.presenter}}</h6>
+          <span>Duration: {{session.duration| duration}}</span>
+          <br />
+          <span>Level: {{session.level}}</span>
+          <p class="card-text">{{session.abstract}}</p>
+        </div>
+      </app-collapsible-div>
+    </div>
   </div>
 </div>
 

@@ -3,6 +3,7 @@ import { EventService } from '../shared/index';
 import { AuthService } from '../shared/auth/auth.service';
 import { EventSessions } from '../models/eventSession.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,25 +14,34 @@ export class NavBarComponent implements OnInit {
 
   foundSessions: EventSessions[] = [];
   modalRef;
-  @ViewChild('content') modalContent;
+  @ViewChild('modalContent') modalContent;
 
   constructor(private authService: AuthService,
     private eventService: EventService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   searchSession(searchSessionTerm) {
     this.foundSessions = this.eventService.searchSessions(searchSessionTerm);
-    this.modalRef = this.modalService.open(this.modalContent);
-    console.log(this.modalRef);
+    if (Array.isArray(this.foundSessions) && this.foundSessions.length > 0) {
+      this.modalRef = this.modalService.open(this.modalContent);
+    }
     // console.log(this.foundSessions);
   }
 
-  closeModal(event) {
-    // console.log(event);
+  closeModal(sessionId) {
+    //   // console.log(event);
     this.modalRef.close();
+    this.router.navigate(['/events', sessionId]);
   }
 
+
 }
+
+
+
+
+

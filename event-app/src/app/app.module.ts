@@ -29,6 +29,9 @@ import { SessionListComponent } from './events/event-details/session-list/sessio
 import { CollapsibleDivComponent } from './shared/collapsible-div/collapsible-div.component';
 import { DurationPipe } from './shared/pipes/duration.pipe';
 import { ModalComponent } from './shared/modal/modal.component';
+import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
+import { VoterService } from './events/event-details/upvote/voter.service';
+import { LocationValidatorDirective } from './shared/custom-validators/location-validator.directive';
 
 
 @NgModule({
@@ -44,7 +47,9 @@ import { ModalComponent } from './shared/modal/modal.component';
     SessionListComponent,
     CollapsibleDivComponent,
     DurationPipe,
-    ModalComponent
+    ModalComponent,
+    UpvoteComponent,
+    LocationValidatorDirective
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule,
@@ -55,7 +60,8 @@ import { ModalComponent } from './shared/modal/modal.component';
     EventDetailsRouteActivatorService,
     ResolvedEventDataService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyCreateEvent },
-    AuthService
+    AuthService,
+    VoterService
   ],
   bootstrap: [AppComponent]
 })

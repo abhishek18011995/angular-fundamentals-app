@@ -27,4 +27,8 @@ export class CreateEventComponent implements OnInit {
   public cancel() {
     this.route.navigate(['/events']);
   }
+
+  public refreshLocationValidator(locationModel) {
+    locationModel.control.updateValueAndValidity();
+  }
 }

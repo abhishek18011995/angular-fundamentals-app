@@ -55,13 +55,20 @@
   </nav>
 </div>
 
-<ng-template #content let-c="close" let-d="dismiss">
-  <app-modal #modalContent (closeModalEvent)="closeModal($event)">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let foundSession of foundSessions">{{foundSession?.name}}</li>
+<ng-template #modalContent>
+  <app-modal (closeModalEvent)="closeModal($event)" [modalRef]="modalRef">
+    <ul class="list-group modal-list">
+      <li class="list-group-item" (click)="closeModal(foundSession.id)" *ngFor="let foundSession of foundSessions">{{foundSession?.name}}</li>
     </ul>
   </app-modal>
 </ng-template>
+
+
+
+
+
+
+
 
 <!-- <button  (click)="closeModal()">test</button> -->
 

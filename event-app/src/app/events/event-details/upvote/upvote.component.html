@@ -1,0 +1,9 @@
+<div  class="card vote" (click)="onclickVote()">
+    <div class="vote-img">
+        <img class="glyph-icon" src="./../../../../assets/images/heart.svg" *ngIf="isUserVoted" />
+        <img class="glyph-icon" src="./../../../../assets/images/heart-empty.svg" *ngIf="!isUserVoted" />
+    </div>
+    <p>
+      {{count}}
+    </p>
+</div>

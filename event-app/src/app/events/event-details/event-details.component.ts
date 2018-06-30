@@ -23,18 +23,22 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('----Inside Event Details----');
     this.getEventDetails();
-    console.log(this.event);
   }
 
-  public getActiveRouteId() {
+  public getActiveRouteId(): number {
     return Number.parseInt(this.activeRoute.snapshot.params['id']);
   }
 
   public getEventDetails() {
-    const id = this.getActiveRouteId();
-    this.event = this.eventService.getEventServiceById(id);
-
+    this.activeRoute.params.subscribe(param => {
+      if (param.id) {
+        const id = Number.parseInt(param.id);
+        this.event = this.eventService.getEventServiceById(id);
+        this.isAddMode = false;
+      }
+    });
   }
 
   public addNewSession(newSession) {
@@ -45,7 +49,6 @@ export class EventDetailsComponent implements OnInit {
 
   public addMode() {
     this.isAddMode = true;
-    console.log(this.isAddMode);
   }
 
   public cancelCreateSessionEvent(event) {
@@ -53,7 +56,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   public changeFilter(value) {
-    console.log(value);
+    // console.log(value);
   }
 
 }

@@ -11,13 +11,24 @@
             }
         }
     }
-    .search{
+    .search {
         color: #fff;
-    }.search:hover{
+    }
+    .search:hover {
         color: #fff;
         text-decoration: none;
     }
     .user {
         margin-left: 8rem;
+    }
+}
+
+.modal-list {
+    .list-group-item {
+        background-color: #2b3f53e6;
+        border-radius:0px; 
+    }
+    .list-group-item:hover {
+        background-color: #2b3f53;
     }
 }

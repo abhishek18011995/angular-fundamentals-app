@@ -3,6 +3,7 @@ import { AuthService } from '../../shared/auth/auth.service';
 import { IUser } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { NgModel } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,16 +19,18 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor(private authService: AuthService,
+  constructor(private authService: AuthService, 
+    private toastr: ToastrService,
     private router: Router) { }
 
   ngOnInit() {
   }
 
   public submitLoginForm(formValue) {
-    console.log(this.userName);
+    // console.log(formValue.userName);
     this.authService.loginUser(formValue);
-    // this.router.navigate(['/events']);
+    this.toastr.success(formValue.userName + ' Logged in Successfully');
+    this.router.navigate(['/events']);
   }
 
   public cancel() {
